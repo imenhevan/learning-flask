@@ -10,6 +10,10 @@ class SignupForm(Form):
 	submit = SubmitField('Sign up')
 
 class LoginForm(Form):
-	email=StringField('Email', validators=[InputRequired(),Email("Please email your email address.")])
+	email=StringField('Email', validators=[InputRequired(),Email("Please enter your email address.")])
 	password=PasswordField('Password', validators=[InputRequired()])
 	submit=SubmitField("Sign in")
+
+class AddressForm(Form):
+	address=StringField('Address', validators=[InputRequired(),Email("Please enter a address.")])
+	submit=SubmitField("Search")
