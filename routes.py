@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from models import db, User, Place
 from forms import SignupForm, LoginForm, AddressForm
+from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI']='postgres://wkznuojfpkvlab:21e65ad54aba15bc8a076c6fae50f975190a7ae403b4f8483a2c8d6a8d1be77e@ec2-54-235-193-0.compute-1.amazonaws.com:5432/dfh5f1pks6jd4v'
+# app.config['SQLALCHEMY_DATABASE_URI']='postgres://wkznuojfpkvlab:21e65ad54aba15bc8a076c6fae50f975190a7ae403b4f8483a2c8d6a8d1be77e@ec2-54-235-193-0.compute-1.amazonaws.com:5432/dfh5f1pks6jd4v'
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:DBadmin@localhost/learningflask'
 db.init_app(app)
 
 app.secret_key="development-key"
@@ -24,10 +26,14 @@ def signup():
 
 	form = SignupForm()
 	if request.method=='POST':
+
 		if form.validate()==False:
+			print form.dob
 			return render_template('signup.html',form=form)
 		else:
-			newuser=User(form.first_name.data, form.last_name.data, form.email.data, form.password.data)
+			dob= datetime.strptime(form.dob.data, '%m/%d/%Y').date()
+			newuser=User(form.first_name.data, form.last_name.data, form.email.data, form.password.data, dob)
+
 			db.session.add(newuser)
 			db.session.commit()
 
@@ -51,10 +57,17 @@ def login():
 			password=form.password.data
 
 			user=User.query.filter_by(email=email).first()
-			if user is not None and user.check_password(password):
+			
+			if user is None:
+				session['loginerror']='Could not find user'
+				return redirect(url_for('login'))
+
+			if user.check_password(password):
 				session['email']=form.email.data
+				session['loginerror']=''
 				return redirect(url_for('home'))
 			else:
+				session['loginerror']='Wrong password!'
 				return redirect(url_for('login'))
 	elif request.method=="GET":
 		return render_template('login.html', form=form)

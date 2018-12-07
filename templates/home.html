@@ -9,7 +9,8 @@
     			{% for place in places %}
     			<article>
     				<a class="name" href="{{ place['url'] }}" target="_blank">{{ place['name'] }}</a>
-    				<p class="walking-distance">{{ place['time'] }} min away</p>
+                    <p class="walking-distance">{{ place['time'] }} min away</p>
+
     			</article>
     			{% endfor %}
     		</div>
@@ -17,7 +18,7 @@
 
     	<div class="section-map">
     		<div class="nav">
-    			<form method="POST" action="/home">
+    			<form method="POST" action="/home" style="width:100%">
     				{{ form.hidden_tag() }}
     				
     				<div class="form-group">
@@ -63,4 +64,17 @@
         .addTo(map);
     }    
   </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('a.name').hover(function(){
+            $(this).siblings('p').show();
+        }).mouseout(function(){
+            $(this).siblings('p').hide();
+        })
+        ;
+    });
+</script>
+
+
 {% endblock %}

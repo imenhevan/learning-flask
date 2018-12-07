@@ -57,7 +57,7 @@ a {
   width: 600px;
 }
 
-.btn-primary {
+/*.btn-primary {
   background: #4285f4;
   border: 1px solid #1266f1;
   color: #ffffff;
@@ -83,7 +83,7 @@ a {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-}
+}*/
 
 
 
@@ -91,10 +91,6 @@ a {
  * Header
  */
 
-header {
-  background-color: #fff;
-  padding: 25px 0;
-}
 
 .title {
   float: left;
@@ -249,6 +245,7 @@ header {
   color: #6e6e6e;
   font-size: 13px;
   margin: 0;
+  display: none;  
 }
 
 .section-map {
