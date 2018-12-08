@@ -2,9 +2,13 @@
 In this intro to Python & Flask project, users can sign up to use the app to enter an address and see a list of interesting places around. A simple authentication is implemented to redirect unauthorized users from accessing protected pages.
 
 **Name: CANDICE(CAN) CHENG**
+
 **Online demo:**  [https://calm-mesa-82098.herokuapp.com/](https://calm-mesa-82098.herokuapp.com/)
+
 **Project Title:** Learning Flask - Places App
+
 **Course:** [CCPS 530](https://ce-online.ryerson.ca/ce/calendar/default.aspx?id=5&section=course&mode=course&ccode=CCPS%20530)
+
 **Instructor**: [Ghassem Tofighi](https://ghassem.com/)
 
 ## Featured Technologies
@@ -14,4 +18,4 @@ In this intro to Python & Flask project, users can sign up to use the app to ent
  
 ## Video demo
 
-[![](placeholder.jpg)](https://youtubelink)
+[![](static/img/device.png)](https://youtu.be/vRU979ASnds)
