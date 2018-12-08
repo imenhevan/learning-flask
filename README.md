@@ -18,4 +18,4 @@ In this intro to Python & Flask project, users can sign up to use the app to ent
  
 ## Video demo
 
-[![]()](https://youtu.be/vRU979ASnds)
+[![](static/img/device.png)](https://youtu.be/vRU979ASnds)
